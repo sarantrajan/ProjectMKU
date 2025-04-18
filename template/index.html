@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            
+        }
+
+        nav {
+            background-color: green;
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        main {
+            height: 82vh;
+            font-size: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 2;
+        }
+
+        .start {
+            height: 50px;
+            width: 130px;
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+        a{
+            text-decoration: none;
+        }
+        .start:hover{
+            background-color: lightgreen;
+            color: black;
+        }
+        .footer {
+            background-color: green;
+            color: white;
+            height: 8vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 0;
+    }
+
+    .main-con, form, .container {
+        width: 95% !important;
+        padding: 15px !important;
+    }
+
+    .left, .right {
+        flex-direction: column !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .start {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    #map {
+        width: 95% !important;
+        height: 50vh !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/predict">Predict</a>
+        <a href="/contact">Contact</a>
+
+    </nav>
+    <main>
+        <marquee behavior="scroll" scrollamount="15" direction="left">
+            <h1>Welcome to the Crop Recommendation System</h1>
+        </marquee>
+        <p>This tool helps farmers select the best crop to grow based on weather and soil conditions.</p>
+        <b>
+            <p>Click on the "Get Started" to predicted the crop!</p>
+        </b>
+        <a href="/predict" class="start">Get Started</a>
+    </main>
+    <div class="footer">
+        <p>© 2025 Crop Recommendation System. All rights reserved.</p>
+    </div>
+</body>
+
+</html>
