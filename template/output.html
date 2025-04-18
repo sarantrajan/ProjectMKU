@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Crop Prediction Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f9f0;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            height: 70%;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .left, .right {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .left {
+            flex-direction: column;
+            background-color: #e6fce6;
+        }
+
+        .left h1 {
+            font-size: 48px;
+            color: green;
+            margin-bottom: 20px;
+        }
+
+        .left p {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .start {
+            height: 50px;
+            width: 150px;
+            background-color: green;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .start:hover {
+            background-color: lightgreen;
+            color: black;
+        }
+
+        .right img {
+            max-height: 70%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+    
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 0;
+    }
+
+    .main-con, form, .container {
+        width: 95% !important;
+        padding: 15px !important;
+    }
+
+    .left, .right {
+        flex-direction: column !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .start {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    #map {
+        width: 95% !important;
+        height: 50vh !important;
+    }
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>Recommended Crop</h1>
+            <p>The best crop for the selected location is: <strong>{{ crop }}</strong></p>
+            <a href="/" class="start">Back to Home</a>
+        </div>
+        <div class="right">
+            <img src="{{ url_for('static', filename='crop_images/' + crop.lower() + '.png') }}" alt="{{ crop }}">
+        </div>
+    </div>
+</body>
+</html>

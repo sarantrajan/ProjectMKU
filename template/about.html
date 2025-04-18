@@ -1,0 +1,183 @@
+<!-- templates/about.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>About - Crop Recommendation System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: green;
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 25px;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: yellow;
+        }
+        main {
+            height: 160vh;
+            padding: 50px;
+            background-color: #f5f5f4;
+        }
+
+        h1 {
+            font-size: 35px;
+            text-align: center;
+            color: green;
+            margin-bottom: 50px;
+        }
+
+        .main-con {
+            background-color: #ffffff;
+            margin: 20px auto;
+            padding: 25px;
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .main-con:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .main-con h2 {
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        .main-con p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background-color: green;
+            color: white;
+            height: 8vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 0;
+    }
+
+    .main-con, form, .container {
+        width: 95% !important;
+        padding: 15px !important;
+    }
+
+    .left, .right {
+        flex-direction: column !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .start {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    #map {
+        width: 95% !important;
+        height: 50vh !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/predict">Predict</a>
+        <a href="/contact">Contact</a>
+
+    </nav>
+    <main>
+        <div id="about" class="section">
+            <h1>About Crop Recommendation System</h1>
+            <div class="main-con">
+                <h2>Project Overview</h2>
+                <p>
+                    The Crop Recommendation System is a machine learning-based web application designed to help farmers
+                    select the best crop based on environmental conditions.
+                    By analyzing factors such as temperature, humidity, water availability, soil pH, and season, the
+                    system
+                    provides data-driven crop recommendations to improve yield and sustainability.
+                </p>
+            </div>
+            <div class="main-con">
+                <h2>Problem Statement</h2>
+                <p>
+                    Traditional farming relies on experience and intuition, which may lead to poor crop selection, low
+                    yields, and resource wastage.
+                    This system aims to eliminate guesswork by using machine learning models to recommend the most
+                    suitable
+                    crop based on scientific data analysis.
+                </p>
+            </div>
+            <div class="main-con">
+                <h2>How It Works</h2>
+                <p>
+                    - User Input: Farmers enter temperature, humidity, water availability, pH level, and season.<br>
+                    - Machine Learning Models: Uses Random Forest, XGBoost, and SVM for prediction.<br>
+                    - Web Interface: A Flask-based backend processes input and returns crop recommendations.<br>
+                </p>
+            </div>
+            <div class="main-con">
+                <h2>Technology Stack</h2>
+                <p>
+                    - Frontend: HTML, CSS, JavaScript<br>
+                    - Backend: Python (Flask), Machine Learning (Scikit-learn, Pandas, NumPy)<br>
+                    - Database: CSV-based dataset<br>
+                    - Models Used: Random Forest, XGBoost, SVM (Voting Classifier)
+                </p>
+            </div>
+            <div class="main-con">
+                <h2>Future Enhancements</h2>
+                <p>
+                    - Integration with real-time weather APIs for dynamic predictions.<br>
+                    - Use of IoT-based soil sensors to collect live data.<br>
+                    - Development of a mobile application for easy farmer access.<br>
+                </p>
+            </div>
+        </div>
+    </main>
+    <div class="footer">
+        <p>© 2025 Crop Recommendation System. All rights reserved.</p>
+    </div>
+</body>
+
+</html>

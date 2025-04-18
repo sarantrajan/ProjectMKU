@@ -1,0 +1,203 @@
+<!-- prediction.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+    
+        nav {
+            background-color: green;
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 25px;
+            font-weight: 500;
+        }
+    
+        nav a:hover {
+            color: yellow;
+        }
+    
+        main {
+            height: 82vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2e7d32;
+        }
+    
+        #map {
+            height: 60vh;
+            width: 80%;
+            max-width: 900px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+        }
+    
+        .start {
+            height: 50px;
+            width: 150px;
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+    
+        .start:hover {
+            background-color: lightgreen;
+            color: black;
+        }
+    
+        a {
+            text-decoration: none;
+        }
+    
+        .footer {
+            background-color: green;
+            color: white;
+            height: 8vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+    
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 0;
+    }
+
+    .main-con, form, .container {
+        width: 95% !important;
+        padding: 15px !important;
+    }
+
+    .left, .right {
+        flex-direction: column !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .start {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    #map {
+        width: 95% !important;
+        height: 50vh !important;
+    }
+}
+
+</style>
+    
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/predict">Predict</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    <main>
+    <h1>Select your location</h1>
+    <div id="map"></div>
+
+    <form action="/predict" method="POST">
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+        <button type="submit" class="start">Predict Crop</button>
+    </form>
+</main>
+    <div class="footer">
+        <p>© 2025 Crop Recommendation System. All rights reserved.</p>
+    </div>
+    <script>
+        // Create the map and center it over India
+        var map = L.map('map').setView([22.9734, 78.6569], 5); // Center India
+    
+        // Set the max bounds for India (approximate lat/lng box)
+        var indiaBounds = [
+            [6.5546079, 68.1113787],  // Southwest coordinates (Kerala)
+            [35.6745457, 97.395561]   // Northeast coordinates (Arunachal Pradesh)
+        ];
+    
+        // Add map tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+    
+        // Apply the bounds restriction
+        map.setMaxBounds(indiaBounds);
+        map.on('drag', function () {
+            map.panInsideBounds(indiaBounds, { animate: false });
+        });
+    
+        var marker;
+    
+        map.on('click', function (e) {
+            var lat = e.latlng.lat;
+            var lon = e.latlng.lng;
+    
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lon;
+    
+            if (marker) {
+                marker.setLatLng(e.latlng);
+            } else {
+                marker = L.marker(e.latlng).addTo(map);
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+        const lat = document.getElementById("latitude").value;
+        const lon = document.getElementById("longitude").value;
+        if (!lat || !lon) {
+            e.preventDefault();
+            alert("Please click on the map to select a location.");
+        }
+    });
+    </script>
+    
+</body>
+
+</html>
